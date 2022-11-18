@@ -8,6 +8,7 @@ public class ProyectoU1BmApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(ProyectoU1BmApplication.class, args);
+         //Editado
 	}
 
 }
