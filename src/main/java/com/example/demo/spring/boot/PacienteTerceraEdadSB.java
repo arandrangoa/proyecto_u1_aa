@@ -1,9 +1,9 @@
-package com.example.demo.herencia;
+package com.example.demo.spring.boot;
 
 import org.springframework.stereotype.Component;
 
 @Component
-public class PacienteTerceraEdadH extends PacienteH{
+public class PacienteTerceraEdadSB extends PacienteSB{
 
 	private String codigoIESS;
 	
