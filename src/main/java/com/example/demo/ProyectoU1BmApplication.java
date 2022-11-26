@@ -17,7 +17,11 @@ import com.example.demo.spring.boot.PacienteTerceraEdadSB;
 public class ProyectoU1BmApplication implements CommandLineRunner {
 
 @Autowired
-	private PacienteTerceraEdadSB pacienteTE;
+private PacienteTerceraEdadSB pacienteTE;
+
+@Autowired
+private PacienteCancerSB cancerSB;
+
 @Autowired	
 private CitaMedicaSB citaMedicaSB;
 @Autowired
@@ -37,10 +41,16 @@ public static void main(String[] args) {
 		this.pacienteTE.setTipo("");
 		this.pacienteTE.setCedula("1727193847");
 		
-		System.out.println(pacienteTE);
+		//System.out.println(pacienteTE);
+		
+		this.cancerSB.setCedula("1714458237");
+		this.cancerSB.setNombre("Daniel");
+		this.cancerSB.setTipo("C");
+		
+		System.out.println(cancerSB);
 		
 		
-		citaMedicaSB.agendar("123123", LocalDateTime.of(2022, 12, 2,  8, 30), pacienteTE, medicoSB);
+		citaMedicaSB.agendar("123123", LocalDateTime.of(2022, 12, 2,  8, 30), this.cancerSB, medicoSB);
 	}
 
 }
