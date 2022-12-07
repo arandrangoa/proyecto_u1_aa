@@ -4,6 +4,11 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 public class Transferencia {
+	@Override
+	public String toString() {
+		return "Transferencia [cuentaOrigen=" + cuentaOrigen + ", cuentaDestino=" + cuentaDestino + ", monto=" + monto
+				+ ", fecha=" + fecha + ", numero=" + numero + "]";
+	}
 	private String cuentaOrigen;
 	private String cuentaDestino;
 	private BigDecimal monto;

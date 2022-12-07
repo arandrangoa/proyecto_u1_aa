@@ -11,5 +11,9 @@ public interface ITransferenciaService {
 	public void realizar(String numeroOrigen, String numeroDestino, BigDecimal monto);
 	
 	//CRUD construir el crud
+	
+	public void insertar(Transferencia transferencia);
+	public void borrar(Integer numTransferencia);
+	
 
 }

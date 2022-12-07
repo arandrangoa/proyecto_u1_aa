@@ -1,6 +1,8 @@
 package com.example.demo.banco.service;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +15,8 @@ import com.example.demo.banco.repository.ITransferenciaRepository;
 @Service
 public class TransferenciaServiceImpl implements ITransferenciaService{
 
+	private static List <Transferencia> baseTransferencias=new ArrayList<>();
+	
 	@Autowired
 	private ITransferenciaRepository iTransferenciaRepository;
 	@Autowired
@@ -46,9 +50,31 @@ public class TransferenciaServiceImpl implements ITransferenciaService{
 		BigDecimal saldoDestino=destino.getSaldo();
 		//3.Operacion resta en el destino
 		BigDecimal nuevoSaldoDestino=saldoDestino.add(monto);
-		//4.Actualziacion cuenta destino
+		//4.Actualziacion cuenta destino 
 		destino.setSaldo(nuevoSaldoDestino);
 		this.bancariaService.actualizar(destino); 
+		
+		Transferencia trans= new Transferencia();
+		trans.setCuentaDestino(numeroDestino);
+		trans.setCuentaOrigen(numeroOrigen);
+		trans.setFecha(LocalDateTime.now());
+		trans.setMonto(monto);
+		trans.setNumero("12345");
+		this.iTransferenciaRepository.insertar(trans);
+	}
+
+	@Override
+	public void insertar(Transferencia transferencia) {
+		// TODO Auto-generated method stub
+		System.out.println("Se creo una transferencia");
+		this.iTransferenciaRepository.insertar(transferencia);
+	}
+
+	@Override
+	public void borrar(Integer numTransferencia) {
+		// TODO Auto-generated method stub
+		System.out.println("Borrar la transferencia con numero: "+numTransferencia);
+		this.iTransferenciaRepository.borrar(numTransferencia);
 	}
 
 
