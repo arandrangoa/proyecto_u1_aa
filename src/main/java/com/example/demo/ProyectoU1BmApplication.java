@@ -16,6 +16,7 @@ import com.example.demo.banco.service.ICuentaBancariaService;
 import com.example.demo.banco.service.ITransferenciaService;
 import com.example.demo.ejercicio1.modelo.Propietario;
 import com.example.demo.ejercicio1.modelo.Vehiculo;
+import com.example.demo.ejercicio1.service.IGestorMatriculaService;
 import com.example.demo.ejercicio1.service.IMatriculaNuevaService;
 import com.example.demo.ejercicio1.service.IMatriculaService;
 import com.example.demo.ejercicio1.service.IVehiculoService;
@@ -36,6 +37,10 @@ public class ProyectoU1BmApplication implements CommandLineRunner {
 	@Autowired
 	@Qualifier("pesado")
 	private IMatriculaNuevaService matriculaService;
+	
+	
+	@Autowired
+	private IGestorMatriculaService gestorMatriculaService;
 
 	public static void main(String[] args) {
 		SpringApplication.run(ProyectoU1BmApplication.class, args);
@@ -49,10 +54,10 @@ public class ProyectoU1BmApplication implements CommandLineRunner {
 
 		// Opcion1
 		Vehiculo vehi = new Vehiculo();
-		vehi.setMarca("Tocyota");
+		vehi.setMarca("Toyota");
 		vehi.setPlaca("PSGD2312");
 		vehi.setPrecio(new BigDecimal(20000));
-		vehi.setTipo("P");
+		vehi.setTipo("L");
 		this.vehiculoService.crear(vehi);
 		vehi.setMarca("Toyota");
 		vehi.setPrecio(new BigDecimal(15000));
@@ -67,7 +72,7 @@ public class ProyectoU1BmApplication implements CommandLineRunner {
 		ipropietarioService.guardar(propietario);
 
 		// Opcion 3
-		this.matriculaService.matricular("1241587458", "PSGD2312");
+		this.gestorMatriculaService.matricular("1727193847", "PSGD2312");
 		
 		
 
